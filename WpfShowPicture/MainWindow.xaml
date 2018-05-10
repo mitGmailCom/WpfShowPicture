@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfShowPicture"
         mc:Ignorable="d"
-        Title="ShowPicture" Height="650" Width="825" ShowActivated="True" ShowInTaskbar="True" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" Loaded="Window_Loaded">
+        Title="ShowPicture" Height="650" Width="825" ShowActivated="True" ShowInTaskbar="True" WindowStartupLocation="CenterScreen"
+        WindowStyle="SingleBorderWindow" Background="Firebrick" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.5*"></RowDefinition>
             <RowDefinition Height="7*"></RowDefinition>
-            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="0.8*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -18,7 +19,7 @@
                 <ColumnDefinition Width="7*"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="0" Name="txtBPath" Margin="3"></TextBox>
+            <TextBox Grid.Column="0" Name="txtBPath" Margin="3" FontSize="16" VerticalContentAlignment="Center"/>
             <Button Grid.Column="1" Name="btnOpenFolder" Margin="3" Content="Open Folder" IsDefault="True" Click="btnOpenFolder_Click"></Button>
         </Grid>
 
@@ -31,22 +32,29 @@
                 <ColumnDefinition Width="189*"/>
             </Grid.ColumnDefinitions>
             <ScrollViewer Grid.Column="1" Width="Auto" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
-                <Border Margin="3" BorderBrush="Black" BorderThickness="3" CornerRadius="5">
-                    <Grid>
-                        <Image Name="lstBoxMainImage" ScrollViewer.CanContentScroll="True" Height="{Binding ElementName=sliderZoom, Path=Value}" Width="{Binding ElementName=sliderZoom, Path=Value}" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5"></Image>
+                <Border Margin="3" BorderBrush="Black" BorderThickness="2" CornerRadius="5">
+                    <Grid Name="gridMainImg">
+                        <Image Name="lstBoxMainImage" ScrollViewer.CanContentScroll="True" Height="{Binding ElementName=sliderZoom, Path=Value}" Width="{Binding ElementName=sliderZoom, Path=Value}" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5"></Image>
                     </Grid>
                 </Border>
             </ScrollViewer>
-            <Slider Grid.Column="2" Name="sliderZoom" Orientation="Vertical" Value="520" IsSelectionRangeEnabled="True" Minimum="0" Maximum="1040" SelectionStart="0" TickPlacement="BottomRight" TickFrequency="1" ValueChanged="sliderZoom_ValueChanged"></Slider>
+            <Slider Grid.Column="2" Name="sliderZoom" Orientation="Vertical" Value="502" IsSelectionRangeEnabled="True" Minimum="0"
+                    Maximum="1030" SelectionStart="0" TickPlacement="BottomRight" TickFrequency="1"></Slider>
             <ProgressBar Grid.Column="0" Name="prgBarDownloadPict" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch" IsIndeterminate="False"></ProgressBar>
-            <ScrollViewer Grid.Column="3" VerticalScrollBarVisibility="Auto" Name="scrlViewerImg" Grid.ColumnSpan="2"></ScrollViewer>
+            <ScrollViewer Grid.Column="3" VerticalScrollBarVisibility="Auto" Name="scrlViewerImg" Grid.ColumnSpan="2">
+                <Border Margin="3" BorderBrush="Black" BorderThickness="2" CornerRadius="5"></Border>
+            </ScrollViewer>
         </Grid>
-            <ScrollViewer Grid.Row="2" Margin="2">
-                <Expander Name="expInfoImg" Header="InfoImg" Width="Auto">
+        <Border  Grid.Row="2" Margin="3" BorderBrush="Black" BorderThickness="2" CornerRadius="5">    
+        <ScrollViewer Margin="2">
+            
+            <Expander Name="expInfoImg" Header="InfoImg" Width="Auto">
                     <StackPanel Name="stpExp">
-                        <TextBlock Name="txblExp"></TextBlock>
+                        <TextBlock Name="txblExp" HorizontalAlignment="Center" VerticalAlignment="Center" ></TextBlock>
                     </StackPanel>
                 </Expander>
-            </ScrollViewer>
+           
+        </ScrollViewer>
+        </Border>
     </Grid>
 </Window>
