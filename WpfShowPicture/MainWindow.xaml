@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfShowPicture"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="825">
+        Title="ShowPicture" Height="650" Width="825" ShowActivated="True" ShowInTaskbar="True" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
             <RowDefinition Height="7*"></RowDefinition>
             <RowDefinition Height="0.5*"></RowDefinition>
         </Grid.RowDefinitions>
@@ -18,24 +18,35 @@
                 <ColumnDefinition Width="7*"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <TextBox Grid.Row="1" Name="txbPath"></TextBox>
-            </Grid>
-
-            <Button Grid.Column="1" Name="btnOpenFolder" Content="Open Folder" IsDefault="True" Click="btnOpenFolder_Click"></Button>
+            <TextBox Grid.Column="0" Name="txtBPath" Margin="3"></TextBox>
+            <Button Grid.Column="1" Name="btnOpenFolder" Margin="3" Content="Open Folder" IsDefault="True" Click="btnOpenFolder_Click"></Button>
         </Grid>
 
         <Grid Grid.Row="1">
-        <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="7*"></ColumnDefinition>
-                <ColumnDefinition Width="3*"></ColumnDefinition>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15*"></ColumnDefinition>
+                <ColumnDefinition Width="540*"></ColumnDefinition>
+                <ColumnDefinition Width="31*"></ColumnDefinition>
+                <ColumnDefinition Width="42*"></ColumnDefinition>
+                <ColumnDefinition Width="189*"/>
             </Grid.ColumnDefinitions>
-            <ListBox Grid.Column="0" Name="lstBoxMainImage"></ListBox>
-            
+            <ScrollViewer Grid.Column="1" Width="Auto" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
+                <Border Margin="3" BorderBrush="Black" BorderThickness="3" CornerRadius="5">
+                    <Grid>
+                        <Image Name="lstBoxMainImage" ScrollViewer.CanContentScroll="True" Height="{Binding ElementName=sliderZoom, Path=Value}" Width="{Binding ElementName=sliderZoom, Path=Value}" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5"></Image>
+                    </Grid>
+                </Border>
+            </ScrollViewer>
+            <Slider Grid.Column="2" Name="sliderZoom" Orientation="Vertical" Value="520" IsSelectionRangeEnabled="True" Minimum="0" Maximum="1040" SelectionStart="0" TickPlacement="BottomRight" TickFrequency="1" ValueChanged="sliderZoom_ValueChanged"></Slider>
+            <ProgressBar Grid.Column="0" Name="prgBarDownloadPict" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch" IsIndeterminate="False"></ProgressBar>
+            <ScrollViewer Grid.Column="3" VerticalScrollBarVisibility="Auto" Name="scrlViewerImg" Grid.ColumnSpan="2"></ScrollViewer>
         </Grid>
+            <ScrollViewer Grid.Row="2" Margin="2">
+                <Expander Name="expInfoImg" Header="InfoImg" Width="Auto">
+                    <StackPanel Name="stpExp">
+                        <TextBlock Name="txblExp"></TextBlock>
+                    </StackPanel>
+                </Expander>
+            </ScrollViewer>
     </Grid>
 </Window>
