@@ -61,7 +61,7 @@ namespace WpfShowPicture
             mainImg.Source = null;
             value = 0;
             ob = 0;
-            sliderZoom.Value = 515;
+            //sliderZoom.Value = 502;
 
             StackPanel stpanel = new StackPanel();
             stpanel.VerticalAlignment = VerticalAlignment.Top;

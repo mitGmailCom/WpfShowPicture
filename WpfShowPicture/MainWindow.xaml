@@ -32,13 +32,15 @@
                 <ColumnDefinition Width="189*"/>
             </Grid.ColumnDefinitions>
             <ScrollViewer Grid.Column="1" Width="Auto" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
-                <Border Margin="3" BorderBrush="Black" BorderThickness="2" CornerRadius="5">
-                    <Grid Name="gridMainImg">
-                        <Image Name="lstBoxMainImage" ScrollViewer.CanContentScroll="True" Height="{Binding ElementName=sliderZoom, Path=Value}" Width="{Binding ElementName=sliderZoom, Path=Value}" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5"></Image>
-                    </Grid>
-                </Border>
+                <Viewbox Stretch="Uniform">
+                    <Border Name="bordeMainImg" Margin="3" BorderBrush="Black" BorderThickness="2" CornerRadius="5">
+                        <Grid Name="gridMainImg">
+                            <Image Name="lstBoxMainImage" ScrollViewer.CanContentScroll="True" Height="{Binding ElementName=sliderZoom, Path=Value}" Width="{Binding ElementName=sliderZoom, Path=Value}" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5"></Image>
+                        </Grid>
+                    </Border>
+                </Viewbox>
             </ScrollViewer>
-            <Slider Grid.Column="2" Name="sliderZoom" Orientation="Vertical" Value="502" IsSelectionRangeEnabled="True" Minimum="0"
+            <Slider Grid.Column="2" Name="sliderZoom" Orientation="Vertical" Value="500" IsSelectionRangeEnabled="True" Minimum="0"
                     Maximum="1030" SelectionStart="0" TickPlacement="BottomRight" TickFrequency="1"></Slider>
             <ProgressBar Grid.Column="0" Name="prgBarDownloadPict" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch" IsIndeterminate="False"></ProgressBar>
             <ScrollViewer Grid.Column="3" VerticalScrollBarVisibility="Auto" Name="scrlViewerImg" Grid.ColumnSpan="2">
